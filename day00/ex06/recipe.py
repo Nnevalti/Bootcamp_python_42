@@ -18,6 +18,30 @@ cookbook = {
 						'prep_time' : '15'
 				}
 			}
+def add_recipe() :
+	name = input("Enter the name of the recipe\n")
+	nb = input("How many ingredients does the recipe need ?\n")
+	if not nb.isdigit() :
+		print("Wrong input cancelled")
+		return
+	ingredient = []
+	for i in range (int(nb), 0, -1) :
+		new_ing = input("Enter one ingredient :\n")
+		ingredient.append(new_ing)
+	meal = input("What type of meal is it ?\n")
+	time = input("How long does it take to cook ?\n")
+	new_recipe = {'ingredients' : ingredient, 'meal' : meal, 'prep_time' : time}
+	add = {name : new_recipe}
+	cookbook.update(add)
+	print(cookbook[name])
+
+
+def delete_recipe(str) :
+	for i in cookbook :
+		if i == str :
+			del cookbook[i]
+			print("%s was deleted" % i)
+			return
 
 def find(str) :
 	for i in cookbook :
@@ -46,16 +70,15 @@ print('5: Quit')
 while 1 :
 	option = input()
 	if option == '1' :
-		print('add')
+		add_recipe()
 	elif option == '2' :
-		print("delete")
+		delete_recipe(input("Please enter the recipe to delete\n"))
 	elif option == '3' :
-		print("Please enter the recipe's name to get its details:")
-		str = input()
-		find(str)
+		find(input("Please enter the recipe's name to get its details:\n"))
 	elif option == '4' :
 		print_cookbook()
 	elif option == '5' :
+		print("Cookbook closed.")
 		exit()
 	else :
 		print("This option does not exist, please type the corresponding number.\nTo exit, enter 5.\n")
