@@ -1,3 +1,6 @@
+def ft_progress(listy) :
+	print("ETA : \r")
+
 listy = range(1000)
 
 ret = 0
