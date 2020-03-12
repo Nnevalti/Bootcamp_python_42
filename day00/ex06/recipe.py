@@ -59,7 +59,7 @@ def print_cookbook() :
 		print("Ingredients list:", cookbook[i]['ingredients'])
 		print("To be eaten for %s" % cookbook[i]['meal'])
 		print("Takes %s minutes of cooking" % cookbook[i]['prep_time'])
-		print('\n')
+		print()
 
 print('Please select an option by typing the corresponding number :')
 print('1: Add a recipe')
